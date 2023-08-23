@@ -5,7 +5,7 @@ const logger = require(path.join(__dirname, 'loggingHandler'));
 
 const loadCommands = (dir, client) => {
 	const files = fs.readdirSync(dir);
-	logger.info('Started command loading');
+	logger.info(`Started command loading in ${dir}`);
 
 	for (const file of files) {
 		const filePath = `${dir}/${file}`;
@@ -20,7 +20,7 @@ const loadCommands = (dir, client) => {
 			if ('data' in command && 'execute' in command) {
 				client.commands.push(command.data.toJSON());
 				client.cmd.set(command.data.name, command);
-				logger.info(`Loaded command: ${command}`);
+				logger.info(`Loaded command: ${command.data.name}`);
 			}
 			else {
 				logger.warn(`The command at ${filePath} is missing a required "data" or "execute" property.`);
@@ -28,7 +28,7 @@ const loadCommands = (dir, client) => {
 		}
 	}
 
-	logger.info('Finished command loading!');
+	logger.info(`Finished command loading in ${dir}`);
 	return client.commands;
 };
 

@@ -26,9 +26,8 @@ const commandsPath = path.join(__dirname, 'commands');
 const eventsPath = path.join(__dirname, 'events');
 
 
-const commands = loadCommands(commandsPath, client);
-
-console.log(commands);
+loadCommands(commandsPath, client);
+logger.info('Completely finished command loading!');
 
 loadEvents(eventsPath, client);
 
