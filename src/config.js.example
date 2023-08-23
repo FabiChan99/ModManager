@@ -1,0 +1,7 @@
+module.exports = {
+	BotToken: 'ENTER_TOKEN',
+	clientID: 'BOT_ID',
+	ManagedGuildID: 'YOUR_SERVER_ID',
+	LogLevel: 'info',  // Should be fine for PRODUCTION
+	LogToFile: false, // Want to log console output to file called bot.log?
+};
