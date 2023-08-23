@@ -2,7 +2,7 @@ const logger = require('./handlers/loggingHandler');
 logger.info('Starting DisGuildDefender');
 
 const path = require('path');
-const { IntentsBitField, REST } = require('discord.js');
+const { IntentsBitField } = require('discord.js');
 const Discord = require('discord.js');
 const loadCommands = require('./handlers/loadCommands');
 const loadEvents = require('./handlers/loadEvents');
