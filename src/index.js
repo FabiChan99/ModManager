@@ -7,7 +7,6 @@ const Discord = require('discord.js');
 const loadCommands = require('./handlers/loadCommands');
 const loadEvents = require('./handlers/loadEvents');
 const config = require('./config.js');
-const bottoken = config.BotToken;
 const ApiCommandManager = require('./handlers/ApiCommandManager');
 
 
@@ -61,5 +60,5 @@ client.on('interactionCreate', async (interaction) => {
 
 
 logger.info('Login in to the Discord Gateway...');
-client.login(bottoken);
+client.login(config.BotToken);
 logger.info('Bot is ready!');
