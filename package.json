@@ -12,6 +12,9 @@
   "author": "Fabi-Chan",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/rest": "^2.0.1",
+    "big-integer": "^1.6.51",
+    "discord-api-types": "^0.37.54",
     "discord.js": "^14.13.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",

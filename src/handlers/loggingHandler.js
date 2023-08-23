@@ -1,5 +1,5 @@
 const winston = require('winston');
-const config = require('../config.json');
+const config = require('../config.js');
 
 const transports = [
 	new winston.transports.Console(),

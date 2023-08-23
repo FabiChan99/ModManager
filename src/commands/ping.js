@@ -4,6 +4,12 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		try {
+			await interaction.reply({ content: 'Pong!', ephemeral: true });
+		}
+		catch (error) {
+			console.error(error);
+			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+		}
 	},
 };

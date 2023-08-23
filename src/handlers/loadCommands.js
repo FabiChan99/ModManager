@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const logger = require(path.join(__dirname, 'loggingHandler'));
 
+
 const loadCommands = (dir, client) => {
 	const files = fs.readdirSync(dir);
 	logger.info('Started command loading');
@@ -17,7 +18,8 @@ const loadCommands = (dir, client) => {
 			const command = require(filePath);
 			// console.log(command);
 			if ('data' in command && 'execute' in command) {
-				client.commands.set(command.data.name, command);
+				client.commands.push(command.data.toJSON());
+				client.cmd.set(command.data.name, command);
 				logger.info(`Loaded command: ${command}`);
 			}
 			else {
@@ -27,6 +29,7 @@ const loadCommands = (dir, client) => {
 	}
 
 	logger.info('Finished command loading!');
+	return client.commands;
 };
 
 module.exports = loadCommands;
