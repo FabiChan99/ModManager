@@ -1,5 +1,6 @@
 const logger = require('./handlers/loggingHandler');
-logger.info('Starting DisGuildDefender');
+const packagejson = require('../package.json');
+logger.info('Starting DisGuildDefender ' + packagejson.version);
 
 const path = require('path');
 const { IntentsBitField } = require('discord.js');
@@ -8,7 +9,7 @@ const loadCommands = require('./handlers/loadCommands');
 const loadEvents = require('./handlers/loadEvents');
 const config = require('./config.js');
 const ApiCommandManager = require('./handlers/ApiCommandManager');
-
+const DbManager = require('./handlers/Database/DatabaseManager');
 
 logger.debug('Setting Gatewayintents');
 const Intents = new IntentsBitField();
@@ -38,3 +39,16 @@ const CommandManager = new ApiCommandManager(config.clientID, config.ManagedGuil
 
 logger.info('Login in to the Discord Gateway...');
 client.login(config.BotToken);
+
+const db = new DbManager();
+
+(async () => {
+	await db.authenticate();
+
+	await new Promise(resolve => setTimeout(resolve, 1000));
+
+	if (!db.isConnected) {
+		logger.error('No connection to database. Shutting down.');
+		process.exit(1);
+	}
+})();
