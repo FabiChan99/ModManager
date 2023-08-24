@@ -35,30 +35,6 @@ const CommandManager = new ApiCommandManager(config.clientID, config.ManagedGuil
 	await CommandManager.registerCommands(client);
 })();
 
-client.on('interactionCreate', async (interaction) => {
-	if (!interaction.isCommand()) return;
-
-	const command = client.cmd.get(`${interaction.commandName}`);
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	}
-	catch (error) {
-		console.error(error);
-		if (interaction.replied || interaction.deferred) {
-			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-		}
-		else {
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-		}
-	}
-});
-
 
 logger.info('Login in to the Discord Gateway...');
 client.login(config.BotToken);
-logger.info('Bot is ready!');
