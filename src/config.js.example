@@ -4,4 +4,14 @@ module.exports = {
 	ManagedGuildID: 'YOUR_SERVER_ID',
 	LogLevel: 'info',  // Should be fine for PRODUCTION
 	LogToFile: false, // Want to log console output to file called bot.log?
+
+
+	// database config
+	dbdriver: 'postgresql', // possible values: mariadb, postgresql
+	dbdatabase: '', // database name
+	dbusername: '', // database username
+	dbpassword: '', // database password
+	dbhost: '', // db hostname or ip
+
+
 };
