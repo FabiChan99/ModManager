@@ -22,13 +22,19 @@ const colorizeLevel = level => {
 	}
 };
 
+const formatTimestamp = timestamp => {
+	const date = new Date(timestamp).toISOString().replace(/T/, ' - ').replace(/\..+/, '');
+	return `[${date}]`;
+};
+
 const logger = winston.createLogger({
 	level: config.LogLevel.toString(),
 	format: winston.format.combine(
 		winston.format.timestamp(),
 		winston.format.printf(({ timestamp, level, message }) => {
 			const coloredLevel = colorizeLevel(level);
-			return `[${timestamp}] ${coloredLevel}: ${message}`;
+			const formattedTimestamp = formatTimestamp(timestamp);
+			return `${formattedTimestamp} ${coloredLevel}: ${message}`;
 		}),
 	),
 	transports: transports,
