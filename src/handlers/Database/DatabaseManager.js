@@ -54,5 +54,5 @@ class DbManager {
 		return this.sequelize;
 	}
 }
-
-module.exports = DbManager;
+const dbManager = new DbManager();
+module.exports = dbManager;
