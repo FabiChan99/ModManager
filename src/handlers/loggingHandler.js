@@ -9,12 +9,26 @@ if (config.LogToFile) {
 	transports.push(new winston.transports.File({ filename: 'bot.log' }));
 }
 
+const colorizeLevel = level => {
+	switch (level) {
+	case 'info':
+		return '\x1b[36m' + level.toUpperCase() + '\x1b[0m'; // Cyan
+	case 'warn':
+		return '\x1b[33m' + level.toUpperCase() + '\x1b[0m'; // Yellow
+	case 'error':
+		return '\x1b[31m' + level.toUpperCase() + '\x1b[0m'; // Red
+	default:
+		return level.toUpperCase();
+	}
+};
+
 const logger = winston.createLogger({
 	level: config.LogLevel.toString(),
 	format: winston.format.combine(
 		winston.format.timestamp(),
 		winston.format.printf(({ timestamp, level, message }) => {
-			return `[${timestamp}] ${level.toUpperCase()}: ${message}`;
+			const coloredLevel = colorizeLevel(level);
+			return `[${timestamp}] ${coloredLevel}: ${message}`;
 		}),
 	),
 	transports: transports,
