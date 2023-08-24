@@ -1,6 +1,6 @@
 const logger = require('./handlers/loggingHandler');
 const packagejson = require('../package.json');
-logger.info('Starting DisGuildDefender ' + packagejson.version);
+logger.info('Starting ModManager ' + packagejson.version);
 
 const path = require('path');
 const { IntentsBitField } = require('discord.js');

@@ -1,5 +1,5 @@
 {
-  "name": "disguilddefender",
+  "name": "modmanager",
   "version": "1.0.0",
   "description": "A Discord-Bot to make Moderation more easier",
   "main": "src/index.js",
