@@ -10,6 +10,8 @@ async function syncDatabase() {
 		logger.info('Synchronisiere Datenbank...');
 		await sequelizeInstance.sync({ force: false });
 		logger.info('Datenbank synchronisiert');
+		const dbInit = require('./autoInit/databaseInit');
+		await dbInit();
 	}
 	catch (error) {
 		logger.error('Fehler beim Synchronisieren der Datenbank:', error);

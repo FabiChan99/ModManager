@@ -14,7 +14,7 @@ const syncDatabase = require('./handlers/Database/syncDatabase');
 
 logger.debug('Setting Gatewayintents');
 const Intents = new IntentsBitField();
-Intents.add(IntentsBitField.Flags.GuildPresences, IntentsBitField.Flags.GuildMembers, IntentsBitField.Flags.MessageContent);
+Intents.add(IntentsBitField.Flags.GuildPresences, IntentsBitField.Flags.GuildMembers, IntentsBitField.Flags.MessageContent, IntentsBitField.Flags.Guilds);
 
 logger.debug('Constructing Client');
 const client = new Discord.Client({ intents: Intents });
@@ -24,6 +24,7 @@ client.cmd = new Discord.Collection();
 
 const commandsPath = path.join(__dirname, 'commands');
 const eventsPath = path.join(__dirname, 'events');
+
 
 (async () => {
 	loadCommands(commandsPath, client);
@@ -45,5 +46,5 @@ const eventsPath = path.join(__dirname, 'events');
 	}
 
 	await syncDatabase();
-
 })();
+module.exports = client;

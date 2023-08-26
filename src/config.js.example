@@ -1,7 +1,8 @@
 module.exports = {
+	botOwnerId: 'ENTER_YOUR_USERID', // https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID- <- How to get your User ID
 	BotToken: 'ENTER_TOKEN',
-	clientID: 'BOT_ID',
-	ManagedGuildID: 'YOUR_SERVER_ID',
+	clientID: 'BOT_ID', // https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID-. <- How to get your Bot ID
+	ManagedGuildID: 'YOUR_SERVER_ID', // https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID- <- How to get your Server ID
 	LogLevel: 'info',  // Should be fine for PRODUCTION
 	LogToFile: false, // Want to log console output to file called bot.log?
 
