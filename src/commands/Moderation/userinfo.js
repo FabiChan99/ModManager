@@ -126,7 +126,7 @@ module.exports = {
 			userinfostring += '**Online-Status and Platform**\n';
 			userinfostring += `${userStatusEmoji} | ${userStatus} - ${platform}\n\n`;
 			userinfostring += '**Communication Timeout**\n';
-			userinfostring += `${member.communicationDisabledUntil > Date.now() ? 'User is currently timed out' : 'User is not timed out'}\n\n`;
+			userinfostring += `${member.communicationDisabledUntil > Date.now() ? `User is currently timed out until: ${time(member.communicationDisabledUntil, 'R')}` : 'User is not timed out'}\n\n`;
 			userinfostring += '**Current Voice Channel**\n' +
 				`${member.voice.channel ? `<#${member.voice.channel.id}>` : 'User is not in a Voice Channel'}\n\n`;
 			userinfostring += flagstring + '\n\n';
