@@ -104,5 +104,22 @@ module.exports = (sequelizeInstance) => {
 		freezeTableName: true,
 	});
 
-	return { Warns, Flags, Settings, Timeouts };
+	const BotEmojs = sequelizeInstance.define('botemojis', {
+		emojiname: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			primaryKey: true,
+		},
+		emojistring: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+	}, {
+		modelName: 'botemojis',
+		timestamps: false,
+		freezeTableName: true,
+	});
+
+
+	return { Warns, Flags, Settings, Timeouts, BotEmojs };
 };
