@@ -83,7 +83,7 @@ module.exports = (sequelizeInstance) => {
 			primaryKey: true,
 		},
 	}, {
-		modelName: 'flags',
+		modelName: 'settings',
 		timestamps: false,
 		freezeTableName: true,
 	});
