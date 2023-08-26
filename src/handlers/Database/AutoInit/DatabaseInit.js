@@ -13,7 +13,7 @@ function sleep(ms) {
 
 async function initDatabase() {
 	try {
-		const result = await Settings.findOne({ where: { key: 'autoinit', value: '1' } });
+		const result = await Settings.findOne({ where: { key: 'autoinitdone', value: '1' } });
 
 		if (result) {
 			logger.info('Database is already initialized');
@@ -42,7 +42,7 @@ async function initDatabase() {
 			await sleep(1000);
 			logger.info('Starting AutoInit...');
 			await initEmoji();
-			await Settings.create({ key: 'autoinit', value: '1' });
+			await Settings.create({ key: 'autoinitdone', value: '1' });
 			logger.info('AutoInit finished');
 		}
 	}

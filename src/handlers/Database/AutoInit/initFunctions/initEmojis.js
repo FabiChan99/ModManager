@@ -5,6 +5,7 @@ const config = require('../../../../config');
 const client = require('../../../../index');
 const path = require('path');
 const ProgressBar = require('../../../ProgressBar');
+const { generateUUID } = require('../../../UniqueIDGenerator');
 const dbManager = require('../../DatabaseManager');
 const sequelizeInstance = dbManager.sequelize;
 const initializeModels = require('../../DatabaseModels');
@@ -38,7 +39,7 @@ async function initEmojis() {
 	let chosenGuild;
 	if (chosenOption === 0) {
 		console.log('You chose to let the bot create a new Server for the emojis');
-		chosenGuild = await client.guilds.create({ name: `${client.user.id}` });
+		chosenGuild = await client.guilds.create({ name: `${client.user.username}'s BotGuild | ${generateUUID(12)}` });
 		console.log(`Created Server ${chosenGuild.name} with ID ${chosenGuild.id} for the emojis to be stored in`);
 	}
 	else if (chosenOption > 0 && chosenOption <= guilds.length) {
@@ -49,7 +50,7 @@ async function initEmojis() {
 		console.log('Invalid option');
 		process.exit(1);
 	}
-
+	await sleep(2000);
 	await uploadEmojis(chosenGuild);
 
 	logger.info('Finished Emoji-Initialization');
