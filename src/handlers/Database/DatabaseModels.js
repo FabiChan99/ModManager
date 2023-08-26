@@ -5,7 +5,6 @@ module.exports = (sequelizeInstance) => {
 		userid: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
-			primaryKey: false, // Kein Primärschlüssel
 		},
 		punisherid: {
 			type: DataTypes.BIGINT,
@@ -34,5 +33,33 @@ module.exports = (sequelizeInstance) => {
 		freezeTableName: true,
 	});
 
-	return Warns;
+	const Flags = sequelizeInstance.define('flags', {
+		userid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		punisherid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		datum: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		description: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
+		caseid: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			primaryKey: true,
+		},
+	}, {
+		modelName: 'flags',
+		timestamps: false,
+		freezeTableName: true,
+	});
+
+	return { Warns, Flags };
 };
