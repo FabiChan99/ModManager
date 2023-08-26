@@ -60,6 +60,33 @@ module.exports = (sequelizeInstance) => {
 		timestamps: false,
 		freezeTableName: true,
 	});
+	const Settings = sequelizeInstance.define('settings', {
+		userid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		punisherid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		datum: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		description: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
+		caseid: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			primaryKey: true,
+		},
+	}, {
+		modelName: 'flags',
+		timestamps: false,
+		freezeTableName: true,
+	});
 
-	return { Warns, Flags };
+	return { Warns, Flags, Settings };
 };
