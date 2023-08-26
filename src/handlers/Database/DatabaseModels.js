@@ -61,26 +61,13 @@ module.exports = (sequelizeInstance) => {
 		freezeTableName: true,
 	});
 	const Settings = sequelizeInstance.define('settings', {
-		userid: {
-			type: DataTypes.BIGINT,
-			allowNull: false,
-		},
-		punisherid: {
-			type: DataTypes.BIGINT,
-			allowNull: false,
-		},
-		datum: {
-			type: DataTypes.BIGINT,
-			allowNull: false,
-		},
-		description: {
-			type: DataTypes.TEXT,
-			allowNull: false,
-		},
-		caseid: {
+		key: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			primaryKey: true,
+		},
+		value: {
+			type: DataTypes.STRING,
+			allowNull: false,
 		},
 	}, {
 		modelName: 'settings',
