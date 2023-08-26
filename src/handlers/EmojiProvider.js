@@ -16,4 +16,4 @@ async function getEmoji(emojiName) {
 	}
 }
 
-module.exports = getEmoji;
+module.exports = { getEmoji };
