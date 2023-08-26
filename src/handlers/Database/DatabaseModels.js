@@ -64,6 +64,7 @@ module.exports = (sequelizeInstance) => {
 		key: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			primaryKey: true,
 		},
 		value: {
 			type: DataTypes.STRING,
