@@ -88,5 +88,33 @@ module.exports = (sequelizeInstance) => {
 		freezeTableName: true,
 	});
 
-	return { Warns, Flags, Settings };
+	const Timeouts = sequelizeInstance.define('timeouts', {
+		userid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		punisherid: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		datum: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+		},
+		description: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
+		caseid: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			primaryKey: true,
+		},
+	}, {
+		modelName: 'timeouts',
+		timestamps: false,
+		freezeTableName: true,
+	});
+
+	return { Warns, Flags, Settings, Timeouts };
 };
